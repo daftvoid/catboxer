@@ -16,7 +16,7 @@ def upload_file(args):
 def download_file(args):
     print(f"Downloading {args.file} to {args.output}")
 
-if __name__ == '__main__':
+def main():
     parser = argparse.ArgumentParser(prog="catboxer")
 
     subparsers = parser.add_subparsers(title="commands", dest="command", required=True)
@@ -34,3 +34,6 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     args.func(args)
+
+if __name__ == '__main__':
+    main()
