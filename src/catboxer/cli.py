@@ -1,7 +1,7 @@
 import argparse
 from pathlib import Path
 
-from catbox import upload
+from catboxer.catbox import upload
 
 
 def upload_file(args):
