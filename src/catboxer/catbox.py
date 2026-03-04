@@ -17,6 +17,6 @@ def upload(filename: str, data: bytes):
                 "application/octet-stream"
             )
         }
-                        )
+    )
 
     return res.text
