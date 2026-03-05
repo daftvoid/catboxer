@@ -19,4 +19,18 @@ def upload(filename: str, data: bytes):
         }
     )
 
-    return res.text
+    return res.text.strip()
+
+def download(url: str, filepath: str):
+    res = requests.get(url, headers={"User-Agent": "Mozilla/5.0"})
+    res.raise_for_status()
+
+    with open(filepath, "wb") as f:
+        f.write(res.content)
+
+
+if __name__ == '__main__':
+    url = upload("testfile.txt", b"this is a test file!")
+    print(url)
+
+    download(url, "testfile.txt")
