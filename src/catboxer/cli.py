@@ -1,13 +1,23 @@
 import argparse
+import glob
 from pathlib import Path
 
 from catboxer.catbox import upload, download
 
 
 def upload_file(args):
-    print(f"Uploading {args.files}, encrypt={args.encrypt} compress={args.compress}")
+    files = []
 
     for file in args.files:
+        matches = glob.glob(file)
+        if matches:
+            files.extend(matches)
+        else:
+            files.append(file)
+
+    print(f"Uploading {files}, encrypt={args.encrypt} compress={args.compress}")
+
+    for file in files:
         path = Path(file)
         if path.is_file():
             link = upload(path.name, path.read_bytes())
