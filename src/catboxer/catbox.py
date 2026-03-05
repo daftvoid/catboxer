@@ -22,9 +22,12 @@ def upload(filename: str, data: bytes):
 
     return res.text.strip()
 
-def download(url: str, filepath: str):
+def download(url: str, filepath: Path):
     res = requests.get(url, headers={"User-Agent": "Mozilla/5.0"})
     res.raise_for_status()
+
+    if not filepath.is_file():
+        filepath = filepath / url.split("/")[-1]
 
     with open(filepath, "wb") as f:
         f.write(res.content)
