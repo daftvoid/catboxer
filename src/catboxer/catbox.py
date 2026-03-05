@@ -18,6 +18,7 @@ def upload(filename: str, data: bytes):
             )
         }
     )
+    res.raise_for_status()
 
     return res.text.strip()
 
