@@ -1,6 +1,9 @@
 ## Installation
 
-Cool Installation Guide here
+```commandline
+git clone https://github.com/daftvoid/catboxer
+pip install ./catboxer
+```
 
 ## General Usage
 
