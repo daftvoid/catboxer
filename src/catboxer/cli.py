@@ -20,8 +20,13 @@ def upload_file(args):
     for file in files:
         path = Path(file)
         if path.is_file():
-            link = upload(path.name, path.read_bytes())
-            print(link)
+            print(f"Uploading {file}... ", end="")
+            try:
+                link = upload(path.name, path.read_bytes())
+            except:
+                print("failed")
+            else:
+                print(link)
 
 def download_file(args):
     print(f"Downloading {args.file} to {args.output}")
