@@ -26,9 +26,9 @@ def upload_file(args):
                 content = download(link)
 
                 if len(content) == 0:
-                    raise ""
-            except:
-                print("failed")
+                    raise Exception("Content Length was 0")
+            except Exception as e:
+                print(f"failed: {e}")
             else:
                 print(link)
 
