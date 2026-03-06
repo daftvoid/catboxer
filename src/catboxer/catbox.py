@@ -36,10 +36,3 @@ def download(url:str) -> bytes:
     res.raise_for_status()
 
     return res.content
-
-
-if __name__ == '__main__':
-    url = upload("testfile.txt", b"this is a test file!")
-    print(url)
-
-    download_to_file(url, "testfile.txt")
