@@ -2,7 +2,7 @@ import argparse
 import glob
 from pathlib import Path
 
-from catboxer.catbox import upload, download
+from catboxer.catbox import upload, download_to_file
 
 
 def upload_file(args):
@@ -31,7 +31,7 @@ def upload_file(args):
 def download_file(args):
     print(f"Downloading {args.file} to {args.output}")
 
-    download(args.file, Path(args.output))
+    download_to_file(args.file, Path(args.output))
 
 def main():
     parser = argparse.ArgumentParser(prog="catboxer")

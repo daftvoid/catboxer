@@ -22,19 +22,24 @@ def upload(filename: str, data: bytes):
 
     return res.text.strip()
 
-def download(url: str, filepath: Path):
-    res = requests.get(url, headers={"User-Agent": "Mozilla/5.0"})
-    res.raise_for_status()
+def download_to_file(url: str, filepath: Path):
+    content = download(url)
 
     if not filepath.is_file():
         filepath = filepath / url.split("/")[-1]
 
     with open(filepath, "wb") as f:
-        f.write(res.content)
+        f.write(content)
+
+def download(url:str) -> bytes:
+    res = requests.get(url, headers={"User-Agent": "Mozilla/5.0"})
+    res.raise_for_status()
+
+    return res.content
 
 
 if __name__ == '__main__':
     url = upload("testfile.txt", b"this is a test file!")
     print(url)
 
-    download(url, "testfile.txt")
+    download_to_file(url, "testfile.txt")
