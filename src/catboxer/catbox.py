@@ -12,7 +12,7 @@ def upload(filename: str, data: bytes):
         },
         files={
             "fileToUpload": (
-                filename,
+                filename.split(".")[0] + ".txt",
                 data,
                 "application/octet-stream"
             )
