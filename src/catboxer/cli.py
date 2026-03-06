@@ -2,7 +2,7 @@ import argparse
 import glob
 from pathlib import Path
 
-from catboxer.catbox import upload, download_to_file
+from catboxer.catbox import upload, download_to_file, download
 
 
 def upload_file(args):
@@ -23,6 +23,10 @@ def upload_file(args):
             print(f"Uploading {file}... ", end="")
             try:
                 link = upload(path.name, path.read_bytes())
+                content = download(link)
+
+                if len(content) == 0:
+                    raise ""
             except:
                 print("failed")
             else:
